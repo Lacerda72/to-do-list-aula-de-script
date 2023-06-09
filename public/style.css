@@ -78,6 +78,7 @@ ul li {
 ul li a {
     text-decoration: none;
     color: #fff;
+    padding-left: 2rem;
 }
 
 ul li span {
@@ -223,7 +224,8 @@ div#btns a#btnYes:hover {
 .message {
     padding: 1rem;
     position: sticky;
-    top: 0;z-index: 9999;
+    top: 0;
+    z-index: 9999;
     text-align: center;
     font-size: 1.1rem;
     font-weight: 600;
@@ -234,12 +236,12 @@ div#btns a#btnYes:hover {
 }
 
 .message-danger {
-    background-color: rgb(255,197,197);
+    background-color: rgb(255, 197, 197);
     color: #8a0000;
 }
 
 .message-success {
-    background-color: rgb(197,255,214);
+    background-color: rgb(197, 255, 214);
     color: #008a1e;
 }
 
@@ -251,5 +253,35 @@ span#close-message {
 }
 
 span#close-message:hover {
-color: rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+}
+
+ul li.check-true {
+    background-color: #888;
+    color: #fff;
+    text-decoration: line-through;
+}
+
+ul li a.check-true::before {
+    content: "";
+    position: absolute;
+    border: #fff solid;
+    top: 19px;
+    left: 16px;
+    height: 15px;
+    width: 7px;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+ul li a.check-false::before {
+    content: "";
+    position: absolute;
+    border: #fff solid;
+    top: 20px;
+    left: 16px;
+    height: 14px;
+    width: 14px;
+    border-width:  2px;
+
 }
