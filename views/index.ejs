@@ -21,23 +21,12 @@
     <% } %>
 
     <header>
-      <% if (task == null) { %>
-      <h1>Lista de Tarefa</h1>
-      <form action="/create" method="post">
-        <input
-          type="text"
-          name="task"
-          id="task"
-          placeholder="Insira uma tarefa"
-        />
-        <button id="addButton" type="submit">Adicionar</button>
-      </form>
+      <% if (task == null) { %> 
+        <%- include('./components/form', { titleForm: "LISTA DE TAREFAS", action: "create", value: "", idBtn: 
+        "addButton", nameBtn: "Adicionar" }) %> 
       <% } else { %>
-      <h1>Editar Tarefa</h1>
-      <form action="/updateOne/<%= task._id %>" method="post">
-        <input type="text" name="task" id="task" Value="<%= task.task %>" />
-        <button id="updateButton" type="submit">Atualizar</button>
-      </form>
+        <%- include('./components/form', { titleForm: "EDITAR TAREFA", action: `updateOne/${task._id}`, value: task.task, idBtn: 
+        "updateButton", nameBtn: "Atualizar" }) %> 
       <% } %>
     </header>
 
@@ -46,7 +35,9 @@
         <% tasksList.forEach((task)=>{ %>
         <li class="check-<%= task.check %>">
           <div>
-            <a href="/check/<%= task._id %>" class="check-<%= task.check %>"> <%= task.task %> </a>
+            <a href="/check/<%= task._id %>" class="check-<%= task.check %>">
+              <%= task.task %>
+            </a>
             <span>Criado em <%= task.date.toLocaleDateString('pt-BR')%></span>
           </div>
           <div>
@@ -62,9 +53,8 @@
       </ul>
     </section>
 
-    <% if (taskDelete != null) { %>
-      <%- include('./components/modalDel') %>
-    <% } %>
+    <% if (taskDelete != null) { %> <%- include('./components/modalDel', {task:
+    taskDelete}) %> <% } %>
 
     <script src="script.js"></script>
   </body>
